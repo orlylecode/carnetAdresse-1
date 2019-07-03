@@ -62,8 +62,11 @@ public class ContactController {
     @RequestMapping(value = "/updateContact")
     public  String update(@RequestParam Long id,Model model ){
         //model.addAttribute("contact",contactMetierimpl.getContact(id));
-        model.addAttribute("contact",new Contact());
-        return "redirect:/index";
+
+        Contact contact = contactRepository.findById(id);
+        model.addAttribute("contact", contact);
+        contactRepository.delete(id);
+        return "/formContact";
     }
 
    /* @RequestMapping(value= "/updateContact")

@@ -13,6 +13,8 @@ import java.util.List;
 @Repository
 public interface ContactRepository extends JpaRepository<Contact, Long> {
        @Query  ("select  c from Contact c where c.nom like :x")
-         public   Page<Contact> chercher(@Param("x") String c, Pageable pageable);
-    }
+       public   Page<Contact> chercher(@Param("x") String c, Pageable pageable);
+
+       public Contact findById (Long id);
+}
 
